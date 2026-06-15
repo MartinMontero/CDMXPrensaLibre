@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corruption &amp; Housing Investigation Guide · CDMX Prensa Libre</title>
+<meta name="description" content="A practical, secure tool to document corruption and right-to-housing violations in Mexico City. For lawyers, journalists, activists and human-rights defenders. Zero inference, everything verifiable.">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="stylesheet" href="../assets/styles.css">
+<link rel="alternate" hreflang="es" href="../">
+<link rel="alternate" hreflang="en" href="./">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="#inicio">
+    <svg width="26" height="26" viewBox="0 0 24 24" role="img" aria-label="CDMX Prensa Libre" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5h13a2 2 0 0 1 2 2v11a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2V5Z"></path>
+      <path d="M8 9h7M8 12h7M8 15h4"></path>
+    </svg>
+    <span>CDMX Prensa Libre <span class="sub">· Guide v2.0</span></span>
+  </a>
+  <span class="spacer"></span>
+  <a class="btn small" href="../" hreflang="es" lang="es">ES</a>
+  <button class="btn small" id="theme-toggle" type="button" aria-label="Toggle theme">🌙</button>
+  <button class="btn small menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">☰ Contents</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav aria-label="Guide contents">
+      <p class="toc-title">The guide</p>
+      <a href="#inicio">Overview</a>
+      <a href="#seguridad">⚠️ Security first</a>
+      <a href="#como-funciona">How it works</a>
+      <a href="#preparar">1 · Prepare documents</a>
+      <a href="#cargar">2 · Load documents</a>
+      <a href="#prompt">3 · The prompt</a>
+      <a href="#ejecutar">4 · Run it step by step</a>
+      <a href="#verificar">5 · Legal verification</a>
+      <a href="#calidad">6 · Quality controls</a>
+      <p class="toc-title">Reference</p>
+      <a href="#marco-legal">Legal framework &amp; sources</a>
+      <a href="#glosario">Glossary</a>
+      <a href="#tarjeta">Field card</a>
+      <a href="#distribucion">Distribution &amp; versions</a>
+      <a href="#recursos">Emergency resources</a>
+      <p class="toc-title">Document</p>
+      <a href="#aviso">Legal &amp; safety notice</a>
+    </nav>
+  </aside>
+
+  <main id="contenido">
+
+    <section class="hero" id="inicio">
+      <p class="eyebrow">Investigation tool · Output in Mexican legal Spanish</p>
+      <h1>Documenting corruption and right-to-housing violations in Mexico City</h1>
+      <p class="lead">A practical guide and an <strong>AI prompt</strong> that turn your investigation documents into a structured, verifiable guide ready for the field, the courtroom and the press. No invention: the model only extracts, organizes and verifies what is already in your sources.</p>
+      <div class="meta">
+        <span><b>For:</b> lawyers · journalists · activists · defenders</span>
+        <span><b>Version:</b> 2.0</span>
+        <span><b>Verified as of:</b> June 2026</span>
+        <span><b>No tracking · no cookies · 100% local</b></span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="#prompt">Copy the prompt</a>
+        <a class="btn" href="#seguridad">Read security first</a>
+        <a class="btn" href="#como-funciona">How it works</a>
+      </div>
+    </section>
+
+    <div class="callout danger">
+      <div class="c-title">⚠️ Before you start: your safety and the victims'</div>
+      <p>This guide deals with matters that can endanger real people. <strong>Do not upload documents containing victims' personal data to consumer AI tools without anonymizing them first</strong>, and read the full <a href="#seguridad">Security first</a> section before processing any sensitive material. Mexico is one of the most dangerous countries to practice journalism and defend land and housing.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h4><span class="icon">🧱</span> Fact-based</h4><p>The prompt runs on a <em>zero-inference</em> principle: every statement carries its source citation, or it is removed.</p></div>
+      <div class="card"><h4><span class="icon">⚖️</span> Legally precise</h4><p>Mexican legal framework verified against official sources as of June 2026, with fixes to common errors.</p></div>
+      <div class="card"><h4><span class="icon">🔒</span> Built for risk</h4><p>Operational-security guidance is built in; this site uses no trackers, cookies or third-party resources.</p></div>
+      <div class="card"><h4><span class="icon">🖨️</span> Field-ready</h4><p>Works offline, prints cleanly, and fits on a quick-reference field card.</p></div>
+    </div>
+
+    <section class="block" id="seguridad">
+      <p class="section-kicker">Top priority</p>
+      <h2>⚠️ Security first (OPSEC)</h2>
+      <p class="section-intro">Operational security is not optional or an appendix — it is the foundation. Read this whole section before touching any sensitive document. Recommendations draw on recognized guides (EFF, Freedom of the Press Foundation, Access Now, CPJ).</p>
+
+      <h3>1 · Model your threat before acting</h3>
+      <p>You cannot protect everything against everyone. <a href="https://ssd.eff.org/module/your-security-plan" rel="noopener noreferrer" target="_blank">EFF Surveillance Self-Defense</a> proposes five questions for your security plan:</p>
+      <ol>
+        <li><strong>What do I want to protect?</strong> (assets: documents, source identities, location).</li>
+        <li><strong>From whom?</strong> (your adversary: an authority, a developer, organized crime, an official).</li>
+        <li><strong>How likely is it that I will need to protect it?</strong></li>
+        <li><strong>How bad are the consequences if I fail?</strong></li>
+        <li><strong>How much effort am I willing to spend to prevent them?</strong></li>
+      </ol>
+      <p>In Mexico the adversary can be sophisticated and state-linked: Pegasus spyware infections of journalists, lawyers and defenders have been documented. The phone is both an asset and an attack surface — network anonymity is moot if the device is compromised.</p>
+
+      <div class="callout danger">
+        <div class="c-title">🔴 The most underestimated risk: pasting documents into a consumer AI</div>
+        <p>Consumer AI tools <strong>retain and may train on</strong> what you type. In 2025 a U.S. court ordered OpenAI to <em>preserve even deleted</em> consumer chats (<em>NYT v. OpenAI</em>); Enterprise/Edu accounts and zero-retention API were exempt. Anthropic, since September 2025, trains on consumer conversations by default unless you opt out (retention up to 5 years if accepted; 30 days if declined); its commercial/API tiers are excluded. Consumer Google Gemini also trains by default.</p>
+        <p><strong>Harm reduction (do this):</strong></p>
+        <ul>
+          <li><strong>Anonymize before uploading.</strong> Replace victims' names, addresses, CURP, RFC and phone numbers with labels (<code>[VICTIM-01]</code>, <code>[PROPERTY-A]</code>) and keep the key only on your encrypted device.</li>
+          <li><strong>Do not upload raw source PDFs</strong> containing victim data to consumer chatbots. Process first (extract only the text you need).</li>
+          <li><strong>Prefer local models</strong> (Ollama, GPT4All) that send nothing to the cloud, or enterprise/API tiers with <em>zero retention</em>.</li>
+          <li><strong>Turn off history</strong> and the training option in the tool's settings.</li>
+          <li>Use an account not tied to your real identity when possible.</li>
+        </ul>
+        <p>Specialist guidance: <a href="https://freedom.press/digisec/blog/using-ai-safely-as-a-journalist-stand-alone-ai-tools/" rel="noopener noreferrer" target="_blank">Freedom of the Press — “Using AI safely as a journalist”</a>.</p>
+      </div>
+
+      <h3>2 · Browse and access without leaving a trace</h3>
+      <div class="cards">
+        <div class="card"><h4>🧅 Tor Browser</h4><p>Hides your IP and location. Download <strong>only</strong> from <a href="https://www.torproject.org/download/" rel="noopener noreferrer" target="_blank">torproject.org</a>. Only what you do <em>inside</em> Tor Browser is anonymous; do not log into identifying accounts or add extensions.</p></div>
+        <div class="card"><h4>💽 Tails</h4><p>An “amnesic” operating system that boots from USB, routes everything through Tor and leaves no trace on shutdown. <a href="https://tails.net/" rel="noopener noreferrer" target="_blank">tails.net</a> (part of the Tor Project since 2024). Includes a metadata cleaner.</p></div>
+        <div class="card"><h4>🛡️ A VPN is not anonymity</h4><p>A VPN shifts who you trust (your ISP for the VPN company) but <strong>does not make you anonymous</strong>. For anonymity, use Tor. If you use a VPN, pick one with a verifiable no-logs policy.</p></div>
+      </div>
+
+      <h3>3 · Communicate with encryption</h3>
+      <ul>
+        <li><strong>Signal</strong> (<a href="https://signal.org" rel="noopener noreferrer" target="_blank">signal.org</a>): end-to-end encrypted by default with minimal metadata. Enable <em>disappearing messages</em>, verify the <em>safety number</em> with your contacts (ideally in person), set a <em>PIN</em> and <em>registration lock</em>, and use <em>usernames</em> to avoid sharing your phone number.</li>
+        <li><strong>Avoid SMS and regular calls:</strong> they are unencrypted and interceptable by the carrier (SS7 weaknesses) or via SIM swap. For two-factor authentication, prefer an authenticator app or a hardware key, never SMS.</li>
+        <li><strong>Encrypted email (PGP):</strong> does not hide the subject, sender or recipient. For the most sensitive matters, use Signal instead of email.</li>
+      </ul>
+
+      <h3>4 · Handle sensitive documents</h3>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Risk</th><th>What to do</th><th>Tool</th></tr></thead>
+        <tbody>
+          <tr><td>Revealing metadata (author, GPS, device, date)</td><td>Strip metadata before sharing; a screenshot drops a photo's EXIF; Signal removes it from sent images</td><td><a href="https://exiftool.org/" rel="noopener noreferrer" target="_blank">ExifTool</a> · <a href="https://0xacab.org/jvoisin/mat2" rel="noopener noreferrer" target="_blank">mat2</a></td></tr>
+          <tr><td>Untrusted source file (malware or metadata)</td><td>Convert to a “safe” PDF in an isolated sandbox</td><td><a href="https://dangerzone.rocks/" rel="noopener noreferrer" target="_blank">Dangerzone</a> (by Freedom of the Press)</td></tr>
+          <tr><td>Device theft or seizure</td><td>Full-disk encryption; power devices fully off at borders/checkpoints</td><td>BitLocker · FileVault · LUKS · <a href="https://veracrypt.jp" rel="noopener noreferrer" target="_blank">VeraCrypt</a></td></tr>
+          <tr><td>Secure deletion</td><td>On SSD/USB, overwriting is unreliable. <strong>Encrypt from the start</strong> and physically destroy critical media</td><td>Prior encryption + physical destruction</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>5 · Accounts and passwords</h3>
+      <ul>
+        <li>Use a <strong>password manager</strong> (KeePassXC, Bitwarden) with a long passphrase (6+ random words) and unique passwords per site.</li>
+        <li>Enable <strong>two-factor authentication</strong>; prefer hardware keys (FIDO2/passkeys) or an authenticator app over SMS.</li>
+        <li>Beware of <em>phishing</em>: check the real domain of every link; watch for near-identical lookalike domains.</li>
+      </ul>
+
+      <h3>6 · Protect sources and victims</h3>
+      <ul>
+        <li>Minimize the personal data you collect and keep. Obtain informed consent from people at risk, and never visually “black-box” redact — flatten/rasterize the document.</li>
+        <li>For anonymous submissions there are <a href="https://securedrop.org/" rel="noopener noreferrer" target="_blank">SecureDrop</a> (over Tor) and, in Mexico, <a href="https://mexicoleaks.mx/send.html" rel="noopener noreferrer" target="_blank">Méxicoleaks</a> (a media/civil-society coalition on GlobaLeaks/Tor). Verify any leak platform is live and monitored before referring a source to it.</li>
+      </ul>
+
+      <div class="callout lock">
+        <div class="c-title">🔒 OPSEC of the resulting guide</div>
+        <p>The guide you produce can identify active corruption actors and mechanisms. <strong>Section 1 (actors)</strong> and <strong>Section 6B (cover-up)</strong> are especially sensitive. Decide your distribution level with your team before sharing, and encrypt the file when appropriate. If you are in immediate danger, see <a href="#recursos">Emergency resources</a>.</p>
+      </div>
+    </section>
+
+    <section class="block" id="como-funciona">
+      <p class="section-kicker">Overview</p>
+      <h2>How it works</h2>
+      <p class="section-intro">Three moments: prepare your documents, load them in phases into the AI tool, and run the synthesis prompt to get a structured guide in 9 sections (0 to 8).</p>
+      <ol class="steps">
+        <li><strong>Prepare and clean</strong> your source documents, give each an ID (Doc-01, Doc-02…) and anonymize them if they contain victim data.</li>
+        <li><strong>Load in phases:</strong> first ingest each document one at a time (without analyzing), then paste the full prompt and run the synthesis.</li>
+        <li><strong>Verify and use:</strong> review each section with the checklist, validate the legal framework with a lawyer, and take the <a href="#tarjeta">field card</a> to meetings.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="c-title">⚠️ Guiding principle</div>
+        <p>The prompt <strong>does not invent or speculate</strong>: it only extracts, organizes and verifies what is in your documents. Output quality depends directly on input quality. Undated, unattributed or second-hand documents contaminate the result and weaken your credibility.</p>
+      </div>
+    </section>
+
+    <section class="block" id="preparar">
+      <p class="section-kicker">Step 1</p>
+      <h2>Prepare your documents</h2>
+      <p class="section-intro">Gather everything before running the prompt. Each document must be citable: with a date, an author and page numbers.</p>
+      <h3>Which documents work</h3>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Document type</th><th>Ideal format</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Investigative journalism</td><td>PDF with selectable text</td><td>Narrative + names + dates</td></tr>
+          <tr><td>Court files / complaints</td><td>Official PDF or Word</td><td>Verifiable procedural proof</td></tr>
+          <tr><td>Audits (ASF / comptrollers)</td><td>Official PDF from <a href="https://www.asf.gob.mx" rel="noopener noreferrer" target="_blank">asf.gob.mx</a></td><td>Official financial data</td></tr>
+          <tr><td>Testimony / statements</td><td>Word or PDF</td><td>Direct testimonial evidence</td></tr>
+          <tr><td>Contracts and permits</td><td>Original signed PDF</td><td>Key documentary evidence</td></tr>
+          <tr><td>NGO / CNDH / CDHCM reports</td><td>Official PDF</td><td>Human-rights framework</td></tr>
+          <tr><td>Public records (RPPC)</td><td>Certificates from the official portal</td><td>Title / encumbrances</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3>How to prepare each document</h3>
+      <ol class="steps">
+        <li><strong>Assign an ID</strong> to each document: <code>Doc-01</code>, <code>Doc-02</code>… It is your citation key throughout the guide.</li>
+        <li><strong>Build a control sheet</strong> with: ID, full title, issuing organization, exact date, geographic scope (borough/neighborhood) and evidentiary type.</li>
+        <li><strong>Confirm PDFs are selectable</strong> (not scanned without OCR). If scanned, run OCR before uploading.</li>
+        <li><strong>Number the pages</strong> if they lack numbering: the prompt cites by page.</li>
+        <li><strong>Note key tables, charts or images by hand</strong>: the model may not read them well as images.</li>
+        <li><strong>Anonymize victims' sensitive data</strong> before uploading (see <a href="#seguridad">Security</a>).</li>
+      </ol>
+      <div class="callout danger">
+        <div class="c-title">🚫 What NOT to include</div>
+        <p>Do not upload documents without a date, identifiable author or verifiable source, or clearly second-hand material without citing its origin. They will contaminate the analysis and may compromise the guide's credibility.</p>
+      </div>
+    </section>
+
+    <section class="block" id="cargar">
+      <p class="section-kicker">Step 2</p>
+      <h2>Load the documents (phased method)</h2>
+      <p class="section-intro">Don't load everything at once with the full prompt. Ingest each document first; run the synthesis afterward.</p>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Phase</th><th>Action</th><th>Exact text to use</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td>Ingest each document, one by one</td><td>“This is source document <code>[Doc-0X]</code> of <code>[N]</code> total. Title: <code>[name]</code>. Ingest it and confirm receipt. Do not analyze yet.”</td></tr>
+          <tr><td><strong>B</strong></td><td>Run the synthesis prompt</td><td>Paste the full prompt and write: “You now have the <code>[N]</code> documents listed above. Run the synthesis starting with Section 0.”</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3>If you have more than 5 documents</h3>
+      <p>Group them by type so you don't overload the model's context, in this order: (1) official records and audits; (2) court files; (3) NGO and human-rights reports; (4) investigative journalism. At the end, state the total and run the prompt.</p>
+    </section>
+
+    <section class="block" id="prompt">
+      <p class="section-kicker">Step 3</p>
+      <h2>The prompt</h2>
+      <p class="section-intro">This is the heart of the tool. The AI output is meant to be produced in Mexican legal Spanish (for use before Mexican authorities). This English version is for international collaborators. Copy it in full and paste it into your AI tool after confirming your documents.</p>
+      <div class="codecard">
+        <div class="codebar">
+          <span class="label">Synthesis prompt · v2.0 · EN</span>
+          <span class="spacer"></span>
+          <button class="copy-btn" type="button" data-copy-target="prompt-en-text" data-copied="Copied! ✓" data-failed="Select and copy manually">⧉ Copy</button>
+        </div>
+        <textarea id="prompt-en-text" readonly spellcheck="false" aria-label="Prompt text in English">SYNTHESIS PROMPT — PRACTICAL GUIDE TO INVESTIGATING CORRUPTION AND
+RIGHT-TO-HOUSING VIOLATIONS IN MEXICO CITY
+Version 2.0 · For Mexican legal/advocacy context · Verified as of June 2026
+
+## ROLE
+You are a senior investigative research analyst and legal-documentation specialist
+with command of the Mexican federal and Mexico City (CDMX) legal systems. You have
+received [N] research reports on government and private-sector corruption in Mexico
+City related to violations of the right to housing and other human rights. Your task
+is to synthesize them into a single structured, practical guide ready for immediate
+use in the field, in litigation, and in the press. Produce the output in Mexican legal
+Spanish (this English version of the prompt is for international collaborators).
+
+## ABSOLUTE CONSTRAINTS — READ BEFORE PROCEEDING
+1. ZERO INFERENCE. ZERO SPECULATION. Every claim must be directly traceable to explicit
+   text in the source documents. If the documents do not say it, you do not say it.
+2. CITATION DISCIPLINE. Every factual statement is followed by [Doc-0X, p.Y]. If you
+   cannot cite it, omit it entirely.
+3. AMBIGUITY PROTOCOL. Reproduce ambiguous language faithfully; flag it ⚠️.
+4. CONTRADICTION PROTOCOL. Present contradicting sources side by side under ⚔️ CONFLICT.
+5. DATA FIDELITY. Copy numbers, dates, names, addresses, amounts and legal citations verbatim.
+6. NO LEGAL CONCLUSIONS OF YOUR OWN. Do not call conduct "criminal/fraudulent/corrupt"
+   unless the source uses that exact word or a court ruling among the sources does.
+7. LEGAL ANTI-HALLUCINATION (CRITICAL). Do NOT cite any article, fraction, case number,
+   thesis or recommendation from memory. If you cannot verify the current text in an
+   official source, flag: 📌 [PENDING HUMAN VERIFICATION — confirm at: URL].
+8. PROTECTION OF PERSONS. Minimize victims' sensitive personal data; if present,
+   summarize by category and flag 🔒.
+
+## OFFICIAL-SOURCE PROTOCOL (VERIFIED AS OF JUNE 2026)
+If you have web access, verify current text in the official source and record URL +
+last-reform date; otherwise flag 📌 with the official URL. NEVER fabricate the text.
+RECENT CHANGES (do not use abolished names):
+• INAI was abolished; the federal access-to-information authority is now "Transparencia
+  para el Pueblo," part of the Secretaría Anticorrupción y Buen Gobierno (SABG).
+• The Secretaría de la Función Pública (SFP) is now the SABG. DeclaraNet still operates.
+• Federal administrative court: TFJA; local: TJACDMX. There is NO court called "TECA".
+REPOSITORIES — Federal: dof.gob.mx; diputados.gob.mx/LeyesBiblio; legislacion.scjn.gob.mx;
+sjf2.scjn.gob.mx; gob.mx/fgr (anti-corruption unit FECC); asf.gob.mx; sna.org.mx /
+sesna.gob.mx; gob.mx/buengobierno; declaranet.gob.mx; transparencia.gob.mx;
+plataformadetransparencia.org.mx; cndh.org.mx; aplicaciones.sre.gob.mx/tratados.
+CDMX: data.consejeria.cdmx.gob.mx; congresocdmx.gob.mx; cdhcm.org.mx; tjacdmx.gob.mx;
+fgjcdmx.gob.mx; registropublico.cdmx.gob.mx; SEDUVI (land use).
+FLAGS: 📌 pending verification · 🔄 repealed/reformed · 📅 reformed on DD/MM/YYYY.
+
+## OUTPUT STRUCTURE (in this exact order; begin with Section 0)
+SECTION 0 — INVENTORY & RELIABILITY (table + evidentiary-landscape paragraph).
+SECTION 1 — ACTOR MAP (1A government, 1B private, 1C explicit relationships only).
+SECTION 2 — MECHANISMS (step-by-step with per-step citation; applicable articles
+verified or 📌). Common in housing/land: despojo (CPF 395 / Código Penal para el Distrito
+Federal 237, reformed Nov 2025); fraude procesal (CPDF 310); cohecho (CPF 222); peculado
+(CPF 223); abuso de autoridad (CPF 215); tráfico de influencia (CPF 221); uso ilícito de
+atribuciones (CPF 217). Plus a summary table.
+SECTION 3 — TIMELINE (dated events table).
+SECTION 4 — IMPACT (4A harm categories; 4B case profiles, minimized 🔒; 4C systemic
+patterns only if stated by sources).
+SECTION 5 — LEGAL TOOLKIT (verify or 📌 each instrument): CPEUM Art. 4 (adequate housing,
+text in force since DOF 02/12/2024) and Arts. 1/14/16/17/22/27; Ley de Amparo (suspension
+to halt evictions); LGAHOTDU; Ley de Desarrollo Urbano del Distrito Federal; Ley de Vivienda
+para la Ciudad de México; Código Civil para el Distrito Federal; Código Penal Federal and
+para el Distrito Federal; CNPP; Ley General de Responsabilidades Administrativas [the old Ley
+Federal Anticorrupción en Contrataciones Públicas was repealed]; ICESCR Art. 11(1) + CESCR
+General Comments 4 and 7; American Convention Arts. 21 and 25 [the Protocol of San Salvador
+has NO standalone housing right — its Art. 11 is the right to a healthy environment; for
+housing cite ICESCR 11(1) and CPEUM 4]; UN Guiding Principles on Business and Human Rights
+(2011). 5B actions already taken; 5C institutional failures; practical note (PNT requests,
+CNPP avenues, FGR-FECC / FGJCDMX filing).
+SECTION 6 — JOURNALIST & ACTIVIST INDEX (6A verifiable facts with verbatim quotes; 6B
+cover-up; 6C PNT targets; 6D red-flags glossary from sources only).
+SECTION 7 — GAPS (only limitations explicitly stated in sources).
+SECTION 8 — QUICK-REFERENCE FIELD CARD (facts from Sections 1–6 only).
+
+## FORMAT
+Tables for comparative data; numbered lists only for processes; prose only for intros.
+Flag 🔴 [unsupported claim], ✅ [high evidentiary confidence — type], 📌 [pending verification].
+
+## FINAL INSTRUCTION
+Before each section: "Can I point to the exact sentence in the sources that supports this?"
+If not, omit it. For each legal provision: "Did I verify the current text in an official
+source?" If not, flag 📌. People may stake their safety, cases and credibility on this
+guide's accuracy. Treat that as an absolute responsibility. Begin with Section 0.</textarea>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="../assets/prompt-en.txt" download>⬇ Download prompt (.txt, EN)</a>
+        <a class="btn" href="../#prompt" hreflang="es" lang="es">Prompt en español</a>
+      </div>
+    </section>
+
+    <section class="block" id="ejecutar">
+      <p class="section-kicker">Step 4</p>
+      <h2>Run it step by step (Sections 0 to 8)</h2>
+      <p class="section-intro">The prompt is designed to run in order. For large matters, split it into sessions. Review each section before moving on.</p>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>§</th><th>Section</th><th>What it produces</th><th>Key user</th></tr></thead>
+        <tbody>
+          <tr><td>0</td><td>Source inventory</td><td>Reliability of each document</td><td>Everyone</td></tr>
+          <tr><td>1</td><td>Actor map</td><td>Who's who and their relationships</td><td>Lawyers, journalists</td></tr>
+          <tr><td>2</td><td>Mechanisms</td><td>How the corruption operates, step by step</td><td>Everyone</td></tr>
+          <tr><td>3</td><td>Timeline</td><td>Chronology of dated events</td><td>Journalists, activists</td></tr>
+          <tr><td>4</td><td>Impact</td><td>Documented harm to victims</td><td>Defenders, lawyers</td></tr>
+          <tr><td>5</td><td>Legal toolkit</td><td>Laws, procedural avenues, institutional failures</td><td>Lawyers</td></tr>
+          <tr><td>6</td><td>Journalist index</td><td>Verifiable facts, glossary, PNT targets</td><td>Journalists, activists</td></tr>
+          <tr><td>7</td><td>Gaps</td><td>Open questions per the sources</td><td>Researchers</td></tr>
+          <tr><td>8</td><td>Quick card</td><td>One-page field reference</td><td>Everyone</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="callout warn"><div class="c-title">⚖️ Rule</div><p>Section 5 (legal toolkit) must ALWAYS be reviewed and validated by a lawyer experienced in CDMX practice before being used in any legal action.</p></div>
+    </section>
+
+    <section class="block" id="verificar">
+      <p class="section-kicker">Step 5</p>
+      <h2>Legal verification</h2>
+      <p class="section-intro">Laws and institution names change. The model can be wrong or out of date. Always verify the critical points independently.</p>
+      <div class="callout danger">
+        <div class="c-title">📌 Without web access, every article is “pending”</div>
+        <p>Many AI tools cannot browse, and several official portals (<code>.gob.mx</code>) block automated access. If the model could not verify, it must flag <code>📌 [pending verification]</code>. Your legal team must confirm <strong>all</strong> those articles in the official source before using the guide.</p>
+      </div>
+      <ul>
+        <li><strong>Property title:</strong> check the <a href="https://registropublico.cdmx.gob.mx" rel="noopener noreferrer" target="_blank">RPPC-CDMX</a>. Real folios change.</li>
+        <li><strong>Sanctions on public servants:</strong> <a href="https://declaranet.gob.mx" rel="noopener noreferrer" target="_blank">DeclaraNet</a> may be outdated; call the agency's internal control body.</li>
+        <li><strong>Status of amparo or nullity suits:</strong> check the judiciary portal or the <a href="https://www.tfja.gob.mx" rel="noopener noreferrer" target="_blank">TFJA</a>/<a href="https://www.tjacdmx.gob.mx" rel="noopener noreferrer" target="_blank">TJACDMX</a> with the case number.</li>
+        <li><strong>Official directory:</strong> roles change; verify on the agency's official page.</li>
+      </ul>
+      <p>The full directory of verified official sources is in <a href="#marco-legal">Legal framework &amp; sources</a>.</p>
+    </section>
+
+    <section class="block" id="calidad">
+      <p class="section-kicker">Step 6</p>
+      <h2>Quality controls</h2>
+      <p class="section-intro">Use this list after each section, before accepting it.</p>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Check that…</th><th>If it fails…</th></tr></thead>
+        <tbody>
+          <tr><td>Every statement has a citation [Doc-0X, p.Y]</td><td>Ask the model to cite or delete</td></tr>
+          <tr><td>No legal article appears without an official URL or a 📌 flag</td><td>Request verification or flag it pending</td></tr>
+          <tr><td>⚔️ CONFLICT flags appear where sources contradict</td><td>Surface the contradiction explicitly</td></tr>
+          <tr><td>🔴 flags appear on unsupported claims</td><td>Ask it to identify the basis or delete</td></tr>
+          <tr><td>Section 7 contains no analysis of the model's own</td><td>Ask it to remove all own analysis</td></tr>
+          <tr><td>Institutions use the current official acronym (FGR, FGJCDMX, TFJA, TJACDMX…)</td><td>Fix the nomenclature</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3>Three common red flags</h3>
+      <div class="cards">
+        <div class="card"><h4>⚠️ Inference</h4><p>Phrases like “likely,” “apparently,” “it can be inferred.” Order: “Remove all inference; facts with citations only.”</p></div>
+        <div class="card"><h4>⚠️ Citing from memory</h4><p>An article with no URL or 📌 flag: the model may be citing outdated text.</p></div>
+        <div class="card"><h4>⚠️ Invented Section 7</h4><p>Gaps not present in any source: the model is generating its own analysis, which is prohibited.</p></div>
+      </div>
+    </section>
+
+    <section class="block" id="marco-legal">
+      <p class="section-kicker">Verified reference · June 2026</p>
+      <h2>Legal framework &amp; official sources</h2>
+      <p class="section-intro">A verified directory of institutions, legislative sources and the rights framework. Always confirm the current text in the official source before using it in a case: laws are reformed and institutions are renamed.</p>
+
+      <div class="callout warn">
+        <div class="c-title">📅 Recent institutional changes (do not use abolished names)</div>
+        <ul>
+          <li><strong>INAI</strong> was abolished (constitutional reform, DOF 20/11/2024). The federal access-to-information authority is now <strong>Transparencia para el Pueblo</strong>, part of the Secretaría Anticorrupción y Buen Gobierno (SABG).</li>
+          <li>The <strong>Secretaría de la Función Pública (SFP)</strong> is now the <strong>SABG</strong> (DOF 28/11/2024). DeclaraNet keeps operating.</li>
+          <li><strong>INFO CDMX</strong> was abolished by the CDMX Congress (Dec 2025) and replaced by the <strong>Instituto de Transparencia para el Pueblo de la Ciudad de México</strong>, now under the city Comptroller. The transition was still underway as of June 2026; requests still go through the <strong>PNT</strong>.</li>
+          <li>There is no court called “TECA”. The federal administrative court is the <strong>TFJA</strong>; the local one is the <strong>TJACDMX</strong>.</li>
+        </ul>
+      </div>
+
+      <h3>Where to report and audit</h3>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Institution</th><th>For</th><th>Official site</th></tr></thead>
+        <tbody>
+          <tr><td>FGR — Fiscalía Especializada en Combate a la Corrupción (FECC)</td><td>Corruption by federal public servants</td><td><a href="https://www.gob.mx/fgr" rel="noopener noreferrer" target="_blank">gob.mx/fgr</a></td></tr>
+          <tr><td>FGJCDMX — local FECC · Territorial Investigation</td><td>Common-jurisdiction crimes in CDMX; property <strong>despojo</strong></td><td><a href="https://www.fgjcdmx.gob.mx" rel="noopener noreferrer" target="_blank">fgjcdmx.gob.mx</a></td></tr>
+          <tr><td>CNDH</td><td>Human-rights complaint (federal)</td><td><a href="https://www.cndh.org.mx" rel="noopener noreferrer" target="_blank">cndh.org.mx</a></td></tr>
+          <tr><td>CDHCM</td><td>Human-rights complaint (CDMX)</td><td><a href="https://cdhcm.org.mx" rel="noopener noreferrer" target="_blank">cdhcm.org.mx</a></td></tr>
+          <tr><td>ASF</td><td>Federal spending oversight; audit reports</td><td><a href="https://www.asf.gob.mx" rel="noopener noreferrer" target="_blank">asf.gob.mx</a></td></tr>
+          <tr><td>SABG</td><td>Federal administrative responsibility · DeclaraNet</td><td><a href="https://www.gob.mx/buengobierno" rel="noopener noreferrer" target="_blank">gob.mx/buengobierno</a> · <a href="https://declaranet.gob.mx" rel="noopener noreferrer" target="_blank">declaranet.gob.mx</a></td></tr>
+          <tr><td>Transparencia para el Pueblo · PNT</td><td>Access-to-information requests (federal)</td><td><a href="https://transparencia.gob.mx" rel="noopener noreferrer" target="_blank">transparencia.gob.mx</a> · <a href="https://www.plataformadetransparencia.org.mx" rel="noopener noreferrer" target="_blank">PNT</a></td></tr>
+          <tr><td>TFJA / TJACDMX</td><td>Nullity suits against administrative acts (federal / local)</td><td><a href="https://www.tfja.gob.mx" rel="noopener noreferrer" target="_blank">tfja.gob.mx</a> · <a href="https://www.tjacdmx.gob.mx" rel="noopener noreferrer" target="_blank">tjacdmx.gob.mx</a></td></tr>
+          <tr><td>RPPC-CDMX</td><td>Title, encumbrances and annotations on property</td><td><a href="https://registropublico.cdmx.gob.mx" rel="noopener noreferrer" target="_blank">registropublico.cdmx.gob.mx</a></td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Right-to-housing &amp; anti-corruption framework</h3>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Instrument</th><th>Article(s)</th><th>What it protects</th><th>Verified note (Jun 2026)</th></tr></thead>
+        <tbody>
+          <tr><td>CPEUM (Federal Constitution)</td><td>Art. 4</td><td>Right to adequate housing</td><td>📅 In force since DOF 02/12/2024: “Toda persona tiene derecho a disfrutar de vivienda adecuada” (formerly “toda familia… vivienda digna y decorosa”).</td></tr>
+          <tr><td>CPEUM</td><td>Arts. 1, 14, 16, 17, 22</td><td>Human rights/pro persona; due process; written order for any “acto de molestia”; access to justice; no confiscation</td><td>In force. Art. 16 is key against evictions without a founded, reasoned order.</td></tr>
+          <tr><td>Ley de Amparo</td><td>CPEUM 103 & 107</td><td>Amparo against acts of authority (e.g., illegal evictions)</td><td>In force (2013). Provisional/definitive <strong>suspension</strong> can halt an eviction in progress.</td></tr>
+          <tr><td>Código Penal Federal</td><td>395 · 222 · 223 · 215 · 221 · 217</td><td>Despojo · bribery · embezzlement · abuse of authority · influence peddling · unlawful use of powers</td><td>In force (Title Ten, corruption offenses). Verify article numbers before citing.</td></tr>
+          <tr><td>Código Penal para el Distrito Federal</td><td>237 · 310</td><td>Despojo · procedural fraud</td><td>📅 Despojo (Art. 237) was toughened in Nov 2025.</td></tr>
+          <tr><td>ICESCR (UN)</td><td>Art. 11(1)</td><td>Adequate standard of living, including <strong>adequate housing</strong></td><td>Mexico: accession 23/03/1981. Interpreted by CESCR General Comments No. 4 (housing elements) and No. 7 (forced evictions).</td></tr>
+          <tr><td>American Convention on Human Rights</td><td>Arts. 21 & 25</td><td>Private property · judicial protection (analogous to amparo)</td><td>Mexico: 1981. In force.</td></tr>
+          <tr><td>Protocol of San Salvador</td><td>Art. 11</td><td>Right to a <strong>healthy environment</strong> (NOT housing)</td><td>🔴 Correction: the Protocol has no standalone housing right. For housing cite ICESCR 11(1) + CPEUM 4.</td></tr>
+          <tr><td>UN Guiding Principles on Business & Human Rights</td><td>2011</td><td>Protect, respect, remedy — for private developers</td><td>International standard (soft law).</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p><small>Verify exact dates and texts in the Gaceta Oficial / Consejería Jurídica before citing in a case. CDMX housing reforms of 2024–2025 (rent caps, contract registry, anti-gentrification “Bando 1”) are in force; a further April 2026 constitutional bill on rents is still pending in committee — not yet law.</small></p>
+    </section>
+
+    <section class="block" id="glosario">
+      <p class="section-kicker">For journalists and activists</p>
+      <h2>Red-flags glossary</h2>
+      <p class="section-intro">Terms to use precisely when reporting. These definitions are indicative; in a specific case, confirm the legal meaning with the applicable law and a lawyer.</p>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Acto de molestia</strong></td><td>An act of authority that temporarily affects rights; requires a written, founded and reasoned order (CPEUM Art. 16).</td></tr>
+          <tr><td><strong>Acto privativo</strong></td><td>An act that permanently deprives a right; requires prior trial with due process (CPEUM Art. 14).</td></tr>
+          <tr><td><strong>Despojo</strong></td><td>Occupying real property or exercising another's real right through violence, deceit or stealth (CPF 395 / CPDF 237).</td></tr>
+          <tr><td><strong>Desalojo forzoso</strong> (forced eviction)</td><td>Removing people from their home without adequate legal protection; <em>prima facie</em> incompatible with the ICESCR (CESCR General Comment No. 7).</td></tr>
+          <tr><td><strong>Fraude procesal</strong></td><td>Simulating acts or altering evidence to mislead a judicial or administrative authority (CPDF 310).</td></tr>
+          <tr><td><strong>Cohecho</strong> (bribery)</td><td>A public servant requesting/receiving an undue benefit to act or omit (CPF 222).</td></tr>
+          <tr><td><strong>Peculado</strong> (embezzlement)</td><td>A public servant diverting or appropriating public resources in their charge (CPF 223).</td></tr>
+          <tr><td><strong>Abuso de autoridad</strong></td><td>A public servant unlawfully exercising powers or using violence without legitimate cause (CPF 215).</td></tr>
+          <tr><td><strong>Amparo indirecto</strong></td><td>Amparo before a District Court against acts of authority that are not final judgments; admits suspension.</td></tr>
+          <tr><td><strong>Suspensión</strong> (provisional/definitive)</td><td>Measure that halts the challenged act while the amparo is decided; the provisional one is immediate.</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </section>
+
+    <section class="block" id="tarjeta">
+      <p class="section-kicker">Immediate use</p>
+      <h2>Quick-reference field card</h2>
+      <p class="section-intro">A template to print and fill with your Section 8 results. Take it to meetings, community visits and press conferences. Use your browser's print to save it as PDF.</p>
+      <div class="fieldcard">
+        <h3>QUICK GUIDE — [Case title] · Updated: [date]</h3>
+        <dl>
+          <dt>🔴 Who</dt><dd>[Top 5 actors by documented centrality]</dd>
+          <dt>⚙️ How</dt><dd>[Top 3 mechanisms, one sentence each]</dd>
+          <dt>📍 Where</dt><dd>[Boroughs / neighborhoods with most activity]</dd>
+          <dt>📅 When</dt><dd>[Key date range and pivotal moments]</dd>
+          <dt>💰 How much</dt><dd>[Largest figures or victim counts]</dd>
+          <dt>✅ Proven</dt><dd>[Evidence types available]</dd>
+          <dt>❓ Not proven</dt><dd>[Section 7 gaps only]</dd>
+          <dt>⚖️ First steps</dt><dd>[Most-cited instruments + receiving body]</dd>
+          <dt>📋 Priority PNT</dt><dd>[Top 3 transparency requests]</dd>
+          <dt>📞 Report to</dt><dd>FGR-FECC / FGJCDMX / CNDH / CDHCM / ASF / Transparencia para el Pueblo</dd>
+        </dl>
+      </div>
+      <div class="cta-row"><button class="btn" type="button" data-print>🖨️ Print / save as PDF</button></div>
+    </section>
+
+    <section class="block" id="distribucion">
+      <p class="section-kicker">Management</p>
+      <h2>Distribution, versions and use by profile</h2>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Profile</th><th>Priority sections</th><th>Caution</th></tr></thead>
+        <tbody>
+          <tr><td>Litigating lawyer</td><td>§5, §4, §1</td><td>Validate §5 with an expert lawyer before court</td></tr>
+          <tr><td>Investigative journalist</td><td>§6A, §3, §6C</td><td>Never use §6A without reading the source's verbatim quote</td></tr>
+          <tr><td>Activist / defender</td><td>§8, §4, §6D</td><td>The glossary is not legal advice</td></tr>
+          <tr><td>Academic researcher</td><td>§7, §2, §0</td><td>Independently verify §5 before citing</td></tr>
+          <tr><td>Communications / press</td><td>§8, §6A, §6B</td><td>Every public claim needs its full citation chain</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3>Version control</h3>
+      <ol>
+        <li>When adding new documents, <strong>re-run Section 0 first</strong>, with all of them included.</li>
+        <li>Check whether new documents contradict or reinforce Sections 1, 2 or 3.</li>
+        <li>Update the field card date (§8).</li>
+        <li>Notify users of the change and archive the prior version with a date for traceability.</li>
+      </ol>
+    </section>
+
+    <section class="block" id="recursos">
+      <p class="section-kicker">If you are at risk</p>
+      <h2>Emergency resources</h2>
+      <div class="callout danger">
+        <div class="c-title">🆘 Immediate danger</div>
+        <p>If your safety is at risk right now, contact the emergency lines below. Verify the number/email on the official site before using it and, where possible, reach out via an encrypted channel (Signal) or over Tor.</p>
+      </div>
+      <div class="table-wrap">
+      <table>
+        <thead><tr><th>Organization</th><th>For</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td>Access Now — Digital Security Helpline</td><td>Digital-security emergencies, 24/7, Spanish available</td><td><a href="https://www.accessnow.org/help/" rel="noopener noreferrer" target="_blank">accessnow.org/help</a> · help@accessnow.org</td></tr>
+          <tr><td>ARTICLE 19 Mexico &amp; Central America</td><td>Freedom of expression; #RompeElMiedo network</td><td><a href="https://articulo19.org" rel="noopener noreferrer" target="_blank">articulo19.org</a> · <a href="https://seguridadintegral.articulo19.org" rel="noopener noreferrer" target="_blank">integral security</a></td></tr>
+          <tr><td>Committee to Protect Journalists (CPJ)</td><td>Emergencies and safety kit for journalists</td><td><a href="https://cpj.org/safety-kit/" rel="noopener noreferrer" target="_blank">cpj.org/safety-kit</a> · emergencies@cpj.org</td></tr>
+          <tr><td>Front Line Defenders</td><td>Human-rights defenders at risk, 24h</td><td><a href="https://www.frontlinedefenders.org/en/emergency-contact-human-rights-defenders" rel="noopener noreferrer" target="_blank">frontlinedefenders.org</a></td></tr>
+          <tr><td>Mecanismo de Protección (SEGOB, Mexico)</td><td>Defenders and journalists at risk (federal). Use in parallel with the independent channels above</td><td><a href="https://www.gob.mx/defensorasyperiodistas" rel="noopener noreferrer" target="_blank">gob.mx/defensorasyperiodistas</a></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3>Learn more about security</h3>
+      <ul>
+        <li><a href="https://ssd.eff.org/" rel="noopener noreferrer" target="_blank">EFF — Surveillance Self-Defense</a></li>
+        <li><a href="https://freedom.press/digisec/" rel="noopener noreferrer" target="_blank">Freedom of the Press Foundation — Digital Security</a></li>
+        <li><a href="https://securityinabox.org/en/" rel="noopener noreferrer" target="_blank">Security in a Box</a></li>
+      </ul>
+    </section>
+
+    <section class="block" id="aviso">
+      <p class="section-kicker">Important</p>
+      <h2>Legal &amp; safety notice</h2>
+      <div class="callout warn">
+        <div class="c-title">⚖️ Not legal advice</div>
+        <p>This guide and prompt are organization and documentation tools. They <strong>do not constitute legal advice</strong> and do not replace a legal professional's judgment. Section 5 must be validated by a lawyer experienced in CDMX practice before any legal action.</p>
+      </div>
+      <div class="callout info">
+        <div class="c-title">📅 Currency of the information</div>
+        <p>The legal and institutional framework was verified against official sources as of <strong>June 2026</strong>. Laws are reformed and institutions change. <strong>Always verify the current text</strong> in the official source before using it in a case.</p>
+      </div>
+      <div class="callout danger">
+        <div class="c-title">🔒 Safety responsibility</div>
+        <p>Those who use this guide may stake their safety, their cases and their credibility on its accuracy and proper use. Follow the <a href="#seguridad">Security first</a> section. The decision about what to publish and to whom is yours and your team's.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="inner">
+    <p><strong>CDMX Prensa Libre</strong> · Guide to investigating corruption and the right to housing · Version 2.0 · Verified as of June 2026.</p>
+    <p class="disclaimer">Made for lawyers, journalists, activists and defenders. A site with no trackers, no cookies and no third-party resources: your visit is shared with no one. Works offline. The content is offered as a documentation tool and does not constitute legal advice. Guide content under Creative Commons BY-SA 4.0; code under the MIT license.</p>
+    <p><a href="../" hreflang="es" lang="es">Versión en español</a> · <a href="#inicio">Back to top</a> · <a href="#aviso">Legal &amp; safety notice</a></p>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

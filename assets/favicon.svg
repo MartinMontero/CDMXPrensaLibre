@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CDMX Prensa Libre">
+  <rect width="64" height="64" rx="12" fill="#1f5c8a"/>
+  <path d="M16 17h22a3 3 0 0 1 3 3v24a4 4 0 0 0 4 4H21a5 5 0 0 1-5-5V17Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M22 25h11M22 31h11M22 37h7" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M41 30h4a3 3 0 0 1 3 3v9a6 6 0 0 1-7 6" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

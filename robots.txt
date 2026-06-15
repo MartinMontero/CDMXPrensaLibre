@@ -1,0 +1,5 @@
+# CDMX Prensa Libre — recurso público / public resource.
+# Este sitio no usa rastreadores ni recopila datos de visitantes.
+# This site uses no trackers and collects no visitor data.
+User-agent: *
+Allow: /

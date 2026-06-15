@@ -1,0 +1,25 @@
+name: Validate site
+
+# Runs the static security/quality validation on every push and pull request.
+# Fails the build if any third-party resource, inline code, weak CSP, broken
+# internal link, or regression of a verified legal fact is introduced.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run validation suite
+        run: python3 scripts/validate.py

@@ -1,0 +1,14 @@
+{
+  "name": "CDMX Prensa Libre — Guía de Investigación de Corrupción y Vivienda",
+  "short_name": "CDMX Prensa Libre",
+  "description": "Herramienta práctica y segura para documentar corrupción y violaciones al derecho a la vivienda en la Ciudad de México.",
+  "lang": "es-MX",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e1218",
+  "theme_color": "#1f5c8a",
+  "icons": [
+    { "src": "assets/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" }
+  ]
+}
