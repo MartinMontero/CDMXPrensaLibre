@@ -239,6 +239,45 @@ def check_prompts(parsers):
             warn(f"prompt file missing terminator marker: {f}")
 
 
+def check_headers_file():
+    """Validate _headers (the production header source on Cloudflare Pages / Netlify)."""
+    if not os.path.exists(os.path.join(ROOT, "_headers")):
+        err("missing _headers file")
+        return
+    txt = read("_headers")
+    if not re.search(r"^/\*\s*$", txt, re.M):
+        err("_headers: missing a '/*' path block")
+    else:
+        ok("_headers: '/*' path block present")
+
+    required = [
+        "Content-Security-Policy", "Strict-Transport-Security", "Referrer-Policy",
+        "X-Content-Type-Options", "X-Frame-Options", "Permissions-Policy",
+        "Cross-Origin-Opener-Policy", "Cross-Origin-Resource-Policy",
+    ]
+    for h in required:
+        if re.search(rf"^\s+{re.escape(h)}:", txt, re.M):
+            ok(f"_headers: {h} present")
+        else:
+            err(f"_headers: missing header {h}")
+
+    cspm = re.search(r"^\s+Content-Security-Policy:\s*(.+)$", txt, re.M)
+    if cspm:
+        csp = cspm.group(1)
+        for directive in ["default-src", "script-src 'self'", "object-src 'none'",
+                          "base-uri", "frame-ancestors 'none'"]:
+            if directive not in csp:
+                err(f"_headers CSP missing/weak: '{directive}'")
+        if "'unsafe-inline'" in csp or "'unsafe-eval'" in csp:
+            err("_headers CSP contains unsafe-inline/unsafe-eval")
+        if not [e for e in errors if "_headers CSP" in e]:
+            ok("_headers: CSP strict (incl. frame-ancestors 'none')")
+    if "no-referrer" in txt:
+        ok("_headers: Referrer-Policy is no-referrer")
+    else:
+        warn("_headers: Referrer-Policy is not 'no-referrer'")
+
+
 def check_verified_facts():
     """Guard against regressions of the high-stakes corrections."""
     es = read("index.html")
@@ -288,6 +327,7 @@ def main():
         if os.path.exists(os.path.join(ROOT, page)):
             parsers[page] = check_page(page)
     check_prompts(parsers)
+    check_headers_file()
     check_verified_facts()
 
     print(f"\n  PASS:  {len(passes)} checks")

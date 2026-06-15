@@ -61,21 +61,48 @@ El sitio es bilingüe: español (`/`, idioma principal) e inglés (`/en/`).
 
 ## Despliegue / Deployment
 
-El sitio son archivos estáticos. No requiere compilación.
+El sitio son archivos estáticos. No requiere compilación. **El objetivo de despliegue es
+Cloudflare Pages**, que honra el archivo `_headers` y por tanto aplica todo el conjunto de
+encabezados de seguridad.
 
-### Opción recomendada: Cloudflare Pages o Netlify (encabezados de seguridad completos)
+### Cloudflare Pages (recomendado)
 
-1. Conecta el repositorio.
-2. *Build command:* (vacío). *Publish directory:* `.` (la raíz).
-3. El archivo `_headers` aplica automáticamente la CSP y demás encabezados de seguridad.
+1. En el panel de Cloudflare: **Workers & Pages → Create → Pages → Connect to Git** y
+   elige este repositorio.
+2. Configuración de compilación:
+   - **Framework preset:** *None*
+   - **Build command:** (vacío)
+   - **Build output directory:** `/` (la raíz)
+3. Cloudflare servirá el archivo [`_headers`](_headers) automáticamente: CSP estricta,
+   HSTS, `Referrer-Policy: no-referrer`, etc. (Verifícalos tras el despliegue en
+   [securityheaders.com](https://securityheaders.com).)
 
-### GitHub Pages
+> #### ⚠️ Crítico en Cloudflare: NO actives funciones que inyecten scripts
+> Varias funciones de Cloudflare insertan JavaScript de terceros y **romperían tanto la
+> CSP como la garantía de “cero recursos de terceros”** (y filtrarían datos de la persona
+> visitante). Mantén **DESACTIVADAS**:
+> - **Web Analytics / Automatic beacon injection** (inyecta `static.cloudflareinsights.com`).
+> - **Rocket Loader** (reescribe e inyecta scripts).
+> - **Email Obfuscation** / Scrape Shield (inyecta un script de ofuscación).
+> - **Mirage / Polish** y cualquier “auto‑inject”.
+>
+> La CSP estricta haría que esos scripts fallaran de todos modos, pero lo correcto es no
+> activarlos. **Auto Minify** y **Brotli** sí son seguros.
 
-Funciona, pero **GitHub Pages no admite encabezados HTTP personalizados**, así que la
-única protección de CSP será la etiqueta `<meta>` incluida en cada página (sin
-`frame-ancestors`, que solo opera como encabezado). El archivo `.nojekyll` ya está
-incluido para que se sirvan correctamente los archivos como `_headers`. Para protección
-completa, usa Cloudflare Pages o Netlify.
+Recomendado además en el panel de Cloudflare:
+- **SSL/TLS → Edge Certificates → Always Use HTTPS:** activado.
+- **HSTS:** ya viene en `_headers`; puedes reforzarlo también aquí. `preload` es difícil
+  de revertir — actívalo solo con compromiso permanente de HTTPS en el dominio y subdominios.
+
+Despliegue por GitHub Actions (alternativa opcional): ver
+[`.github/workflows/cloudflare-pages.yml`](.github/workflows/cloudflare-pages.yml).
+
+### Otros hosts
+
+- **Netlify:** también honra `_headers` (y `netlify.toml`); *publish dir* `.`, sin build.
+- **GitHub Pages:** funciona (incluye `.nojekyll`), pero **no admite encabezados HTTP
+  personalizados**, así que solo aplicaría la CSP de la etiqueta `<meta>` (sin
+  `frame-ancestors`). Úsalo solo como espejo; Cloudflare/Netlify dan protección completa.
 
 ### Servicio Tor (.onion) — recomendado para máxima protección
 

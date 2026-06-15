@@ -1,0 +1,36 @@
+name: Deploy to Cloudflare Pages
+
+# Optional CI deploy. The simplest path is Cloudflare's native Git integration
+# (Cloudflare dashboard → Workers & Pages → Create → Pages → connect this repo,
+# Build command: empty, Build output directory: /). That requires no secrets and
+# auto-deploys on push.
+#
+# This workflow is an ALTERNATIVE for teams who prefer deploying from GitHub
+# Actions. It is manual-only (workflow_dispatch) so it never fails CI for missing
+# secrets. To use it, add repository secrets:
+#   CLOUDFLARE_API_TOKEN   (Pages:Edit permission)
+#   CLOUDFLARE_ACCOUNT_ID
+# and set your Pages project name below.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Validate before deploy
+        run: python3 scripts/validate.py
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=cdmx-prensa-libre

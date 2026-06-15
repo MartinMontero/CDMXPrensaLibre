@@ -46,10 +46,17 @@ HTTP, no en `<meta>`; por eso se recomienda un host que honre `_headers`.
 
 ## Recomendaciones de hospedaje / Hosting
 
+Objetivo de despliegue: **Cloudflare Pages** (honra `_headers`).
+
 - Usa un host donde **no se registren las IP** de visitantes (o puedas desactivar el
   registro de acceso) y donde controles la configuración de encabezados. Evita
   plataformas que inyecten su propia analítica o scripts.
-- **Fuerza HTTPS** y considera enviar la cabecera `Onion-Location`.
+- **⚠️ En Cloudflare, NO actives funciones que inyecten JavaScript**, porque romperían
+  la CSP y la garantía de cero recursos de terceros: **Web Analytics / automatic beacon
+  injection** (`static.cloudflareinsights.com`), **Rocket Loader**, **Email Obfuscation /
+  Scrape Shield**, **Mirage**. La CSP estricta las bloquearía igualmente, pero no deben
+  habilitarse. `Auto Minify` y `Brotli` son seguros.
+- **Fuerza HTTPS** (Cloudflare: *Always Use HTTPS*) y considera enviar `Onion-Location`.
 - **Servicio Tor (.onion) v3:** dado que el sitio no carga recursos externos, es seguro
   publicarlo también como servicio onion. El tráfico nunca sale de la red Tor y no se
   expone una IP pública. Suprime los banners de versión del servidor (`Server`).
